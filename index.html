@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body style="overflow: hidden">
+        <img
+            src="spinning-fish.gif"
+            alt="fishe"
+            style="display: none; width: 100vw; height: 100vh"
+            id="fish-gif"
+        />
+        <button
+            id="fish-button"
+            style="
+                background-color: cadetblue;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 7px 20px 7px 20px;
+                cursor: pointer;
+            "
+        >
+            Fishe
+        </button>
+    </body>
+    <script>
+        function playSound(audioName, loop) {
+            let audio = new Audio(audioName);
+            audio.loop = loop;
+            audio.play();
+        }
+        const fishButton = document.getElementById('fish-button');
+        const fishGif = document.getElementById('fish-gif');
+        function fishSpin() {
+            fishButton.style.visibility = 'hidden';
+            fishGif.style.display = 'block';
+            playSound('funky-town-low-quality.mp3', false);
+        }
+        fishButton.addEventListener('click', fishSpin);
+        fishButton.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                fishButton.click();
+            }
+        });
+    </script>
+</html>
